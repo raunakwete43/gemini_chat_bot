@@ -22,6 +22,7 @@ Gemini ChatBOT is  an intelligent chatbot that can answer your questions and con
 {
   "api_key": "<YOUR_API_KEY>"
 }
+```
 Replace `<YOUR_API_KEY>` with your actual API key.
 Save the README file.
 
