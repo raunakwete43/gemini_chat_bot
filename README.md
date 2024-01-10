@@ -36,6 +36,11 @@ Here are some examples of how you can use Gemini ChatBOT:
 * Ask it to write a poem.
 * Ask it to help you with a math problem.
 
+## To Use
+```bash
+streamlit run app1.py
+```
+
 ## Benefits
 
 There are many benefits to using Gemini ChatBOT, including:
