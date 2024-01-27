@@ -1,5 +1,9 @@
 # API 
 key.json
+chat_history.db
+data/
+__pycache__
+fake_web/
 
 # Logs
 logs

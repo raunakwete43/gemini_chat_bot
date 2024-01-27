@@ -42,3 +42,25 @@ class LLMChat:
 
     def get_model_info(self):
         return self.chat.model
+
+
+import streamlit as st
+
+def load_font(font_file):
+    """Loads a font file and returns a CSS string."""
+    with open(font_file, "rb") as f:
+        font_data = f.read()
+
+    font_name = font_file.split(".")[0]
+    css = f"""
+        @font-face {{
+            font-family: "{font_name}";
+            src: url(data:font/{font_file.split (".")[-1]};base64,{font_data.decode("utf-8")});
+        }}
+
+        body {{
+            font-family: "{font_name}";
+        }}
+    """
+    return css
+

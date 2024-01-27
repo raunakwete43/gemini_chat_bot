@@ -87,12 +87,9 @@ with st.sidebar:
         )
     else:
         # This will happen the first time AI response comes in
-        chat_options = [new_chat_id, st.session_state.chat_id] + list(past_chats.keys())
-        if st.session_state.chat_id in past_chats.keys():
-            chat_options.remove(st.session_state.chat_id)
         st.session_state.chat_id = st.selectbox(
             label="Pick a past chat",
-            options=chat_options,
+            options=[new_chat_id, st.session_state.chat_id] + list(past_chats.keys()),
             index=1,
             format_func=lambda x: past_chats.get(
                 x,
@@ -123,6 +120,7 @@ with st.sidebar:
 
         # Reload the page to refresh the sidebar
         st.experimental_rerun()
+
 
 st.write("## Chat with Gemini with the least safety options")
 
