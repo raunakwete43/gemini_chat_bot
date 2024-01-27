@@ -104,7 +104,7 @@ with st.sidebar:
         )
     # Save new chats after a message has been sent to AI
     # TODO: Give user a chance to name chat
-    st.session_state.chat_title = f"Chat-{st.session_state.chat_id}"
+    st.session_state.chat_title = f"Chat:{st.session_state.chat_id}"
 
     # Add a button to delete the current chat
     if st.button("Delete Current Chat"):
