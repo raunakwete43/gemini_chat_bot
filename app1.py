@@ -1,11 +1,12 @@
 import json
 import os
 import time
-from chat_history import chat_history
 
 import google.generativeai as genai
 import joblib
 import streamlit as st
+
+from chat_history import chat_history
 
 st.set_page_config(
     page_title="Gemini ChatBOT",
@@ -43,7 +44,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 def get_chat_id():
     current_time = time.time()
     local_time = time.localtime(current_time)
-    formatted_time = time.strftime("%c", local_time)
+    formatted_time = time.strftime("%a %b %d %y %I:%M %p", local_time)
     return formatted_time
 
 
@@ -96,9 +97,11 @@ with st.sidebar:
             index=1,
             format_func=lambda x: past_chats.get(
                 x,
-                "New Chat"
-                if x != st.session_state.chat_id
-                else st.session_state.chat_title,
+                (
+                    "New Chat"
+                    if x != st.session_state.chat_id
+                    else st.session_state.chat_title
+                ),
             ),
             placeholder="_",
         )
