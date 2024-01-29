@@ -88,26 +88,21 @@ with st.sidebar:
         )
     else:
         # This will happen the first time AI response comes in
-        chat_options = [new_chat_id, st.session_state.chat_id] + list(past_chats.keys())
-        if st.session_state.chat_id in past_chats.keys():
-            chat_options.remove(st.session_state.chat_id)
         st.session_state.chat_id = st.selectbox(
             label="Pick a past chat",
-            options=chat_options,
+            options=[new_chat_id, st.session_state.chat_id] + list(past_chats.keys()),
             index=1,
             format_func=lambda x: past_chats.get(
                 x,
-                (
-                    "New Chat"
-                    if x != st.session_state.chat_id
-                    else st.session_state.chat_title
-                ),
+                "New Chat"
+                if x != st.session_state.chat_id
+                else st.session_state.chat_title,
             ),
             placeholder="_",
         )
     # Save new chats after a message has been sent to AI
     # TODO: Give user a chance to name chat
-    st.session_state.chat_title = f"Chat  {st.session_state.chat_id}"
+    st.session_state.chat_title = f"Chat {st.session_state.chat_id}"
 
     # Add a button to delete the current chat
     if st.button("Delete Current Chat"):
